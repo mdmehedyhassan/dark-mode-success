@@ -6,6 +6,7 @@ import { GlobalStyles, lightTheme, darkTheme } from './themes';
 function App() {
 
   const [theme, setTheme] = useState("light");
+  const [darkMode, setDarkMode] = useState(true);
 
   const themeToggle = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
@@ -15,7 +16,7 @@ function App() {
     <div>
       <ThemeProvider theme={theme === "dark" ? lightTheme : darkTheme}>
         <GlobalStyles />
-          <button onClick={() => themeToggle()}>theme Change</button>
+          <button onClick={() => [themeToggle(), setDarkMode(!darkMode)]}> {darkMode ? "light" : "dark"} </button>
       </ThemeProvider>
       <p>Hello</p>
     </div>
